@@ -5220,11 +5220,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\prog\\controlersLoveGame\\controlersLoveGame\\controlersLoveGame.csproj",
+      "projectUniqueName": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\controlersLoveGame.csproj",
       "projectName": "controlersLoveGame",
-      "projectPath": "C:\\prog\\controlersLoveGame\\controlersLoveGame\\controlersLoveGame.csproj",
+      "projectPath": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\controlersLoveGame.csproj",
       "packagesPath": "C:\\Users\\ypc\\.nuget\\packages\\",
-      "outputPath": "C:\\prog\\controlersLoveGame\\controlersLoveGame\\obj\\",
+      "outputPath": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

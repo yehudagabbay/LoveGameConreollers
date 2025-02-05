@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("controlersLoveGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffd6c81abf875d12b75e114aa87354a6b989b01c")]
 [assembly: System.Reflection.AssemblyProductAttribute("controlersLoveGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("controlersLoveGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

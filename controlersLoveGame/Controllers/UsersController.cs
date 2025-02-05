@@ -93,6 +93,54 @@ namespace controlersLoveGame.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            try
+            {
+                // חיפוש המשתמש במסד הנתונים
+                var user = await _context.Users.FindAsync(id);
+                if (user == null)
+                {
+                    return NotFound("User not found.");
+                }
+
+                // מחיקת המשתמש
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+
+                return Ok($"User with ID {id} has been deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+        [HttpDelete("deleteByEmail/{email}")]
+        public async Task<IActionResult> DeleteUserByEmail(string email)
+        {
+            try
+            {
+                // בדיקה אם המשתמש קיים
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+                if (user == null)
+                {
+                    return NotFound("User not found.");
+                }
+
+                // מחיקת המשתמש
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+
+                return Ok($"User with email {email} has been deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+
 
     }
 
