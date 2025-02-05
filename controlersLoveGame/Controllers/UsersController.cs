@@ -1,6 +1,5 @@
 ﻿using controlersLoveGame.Data;
 using controlersLoveGame.Models;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -86,7 +85,7 @@ namespace controlersLoveGame.Controllers
                     return Unauthorized("Invalid email or password.");
                 }
 
-                return Ok(user);
+                return Ok(new { Message = $"{user.Nickname} is logged in", User = user });
             }
             catch (Exception ex)
             {
@@ -139,7 +138,114 @@ namespace controlersLoveGame.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] controlersLoveGame.Models.ResetPasswordRequest request)
 
+        {
+            try
+            {
+                // בדיקה אם המשתמש קיים במערכת
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+                if (user == null)
+                {
+                    return NotFound("User not found.");
+                }
+
+                // הצפנת הסיסמה החדשה
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+
+                // שמירת השינויים במסד הנתונים
+                await _context.SaveChangesAsync();
+
+                return Ok("Password has been reset successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpPost("get-selected-cards")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetSelectedCards([FromBody] DrawCardRequest request)
+        {
+            try
+            {
+                // רשימה לשמירת הכרטיסים שנבחרו
+                List<Card> selectedCards = new List<Card>();
+                Random random = new Random(); // יצירת אובייקט לבחירה רנדומלית
+
+                // לולאה על כל בחירה שהמשתמש שלח (קטגוריה + רמת קושי + כמות כרטיסים)
+                foreach (var selection in request.Selections)
+                {
+                    int categoryId = selection.CategoryID; // מזהה הקטגוריה
+                    int levelId = selection.LevelID; // מזהה רמת הקושי
+                    int numberOfCards = selection.NumberOfCards; // מספר הכרטיסים שהמשתמש רוצה לקבל מהשילוב הזה
+
+                    // שליפת כרטיסים מהמסד שמתאימים לקטגוריה ולרמת הקושי שנבחרו
+                    var cards = await _context.Cards
+                        .Where(c => c.CategoryID == categoryId && c.LevelID == levelId && c.IsActive) // תנאים לבחירת הכרטיסים
+                        .ToListAsync(); // שליפת הנתונים מהמסד
+
+                    // ערבוב רשימת הכרטיסים ובחירת כמות רנדומלית לפי בקשת המשתמש
+                    var shuffledCards = cards.OrderBy(x => random.Next()).Take(numberOfCards).ToList();
+
+                    // הוספת הכרטיסים שנבחרו לרשימה הסופית של הכרטיסים שיוחזרו
+                    selectedCards.AddRange(shuffledCards);
+                }
+
+                // אם לא נמצאו כרטיסים בכלל, מחזירים הודעה למשתמש
+                if (selectedCards.Count == 0)
+                {
+                    return NotFound("No cards found for the selected categories and levels.");
+                }
+
+                // החזרת הכרטיסים שנבחרו
+                return Ok(selectedCards);
+            }
+            catch (Exception ex)
+            {
+                // במקרה של תקלה, מחזירים שגיאת 500 עם פרטי השגיאה
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+        [HttpPost("update-card-status")]
+        public async Task<IActionResult> UpdateCardStatus([FromBody] UserCardStatus request)
+        {
+            try
+            {
+                // הדפסת הבקשה שהתקבלה כדי לבדוק אם הערכים מגיעים נכון
+                Console.WriteLine($"UserID: {request.UserID}, CardID: {request.CardID}, IsCompleted: {request.IsCompleted}, LikeStatus: {request.LikeStatus}");
+
+                // חיפוש אם כבר קיימת רשומה לכרטיס הזה עבור המשתמש
+                var existingStatus = await _context.UserCardsStatus
+                    .FirstOrDefaultAsync(ucs => ucs.UserID == request.UserID && ucs.CardID == request.CardID);
+
+                if (existingStatus != null)
+                {
+                    // עדכון הסטטוס אם כבר קיים רשומה
+                    existingStatus.IsCompleted = request.IsCompleted;
+                    existingStatus.LikeStatus = request.LikeStatus;
+                }
+                else
+                {
+                    // יצירת רשומה חדשה
+                    _context.UserCardsStatus.Add(new UserCardStatus
+                    {
+                        UserID = request.UserID,
+                        CardID = request.CardID,
+                        IsCompleted = request.IsCompleted,
+                        LikeStatus = request.LikeStatus
+                    });
+                }
+
+                await _context.SaveChangesAsync();
+                return Ok("Card status updated successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
 
 
     }
