@@ -217,7 +217,7 @@ namespace controlersLoveGame.Controllers
                 Console.WriteLine($"UserID: {request.UserID}, CardID: {request.CardID}, IsCompleted: {request.IsCompleted}, LikeStatus: {request.LikeStatus}");
 
                 // חיפוש אם כבר קיימת רשומה לכרטיס הזה עבור המשתמש
-                var existingStatus = await _context.UserCardsStatus
+                var existingStatus = await _context.UserCardStatus
                     .FirstOrDefaultAsync(ucs => ucs.UserID == request.UserID && ucs.CardID == request.CardID);
 
                 if (existingStatus != null)
@@ -229,7 +229,7 @@ namespace controlersLoveGame.Controllers
                 else
                 {
                     // יצירת רשומה חדשה
-                    _context.UserCardsStatus.Add(new UserCardStatus
+                    _context.UserCardStatus.Add(new UserCardStatus
                     {
                         UserID = request.UserID,
                         CardID = request.CardID,

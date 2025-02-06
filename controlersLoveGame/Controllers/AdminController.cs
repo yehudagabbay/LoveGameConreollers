@@ -211,6 +211,45 @@ namespace controlersLoveGame.Controllers
                 return StatusCode(500, $"Error retrieving card: {ex.Message}");
             }
         }
+        // שליפת כל הכרטיסים שאהבו במיוחד
+        [HttpGet("get-all-favorite-cards")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetAllFavoriteCards()
+        {
+            var favoriteCards = await _context.UserCardStatus
+                .Where(ucs => ucs.LikeStatus == 2) // כרטיסים שאהבו במיוחד 💖
+                .Select(ucs => ucs.Card)
+                .Distinct()
+                .ToListAsync();
+
+            return Ok(favoriteCards);
+        }
+
+        // שליפת כל הכרטיסים שאהבו (לא במיוחד)
+        [HttpGet("get-all-liked-cards")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetAllLikedCards()
+        {
+            var likedCards = await _context.UserCardStatus
+                .Where(ucs => ucs.LikeStatus == 1) // כרטיסים שאהבו ❤️
+                .Select(ucs => ucs.Card)
+                .Distinct()
+                .ToListAsync();
+
+            return Ok(likedCards);
+        }
+
+        // שליפת כל הכרטיסים שסומנו כבוצעו
+        [HttpGet("get-all-completed-cards")]
+        public async Task<ActionResult<IEnumerable<Card>>> GetAllCompletedCards()
+        {
+            var completedCards = await _context.UserCardStatus
+                .Where(ucs => ucs.IsCompleted) // כרטיסים שסומנו ✅
+                .Select(ucs => ucs.Card)
+                .Distinct()
+                .ToListAsync();
+
+            return Ok(completedCards);
+        }
+
 
 
     }
