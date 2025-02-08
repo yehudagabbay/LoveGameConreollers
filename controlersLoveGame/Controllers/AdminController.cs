@@ -250,6 +250,30 @@ namespace controlersLoveGame.Controllers
             return Ok(completedCards);
         }
 
+        [HttpGet("get-all-feedbacks")]
+        public async Task<ActionResult<IEnumerable<Feedback>>> GetAllFeedbacks()
+        {
+            try
+            {
+                var feedbacks = await _context.Feedback
+                    .Include(f => f.User) // מציג פרטי המשתמש
+                    .Include(f => f.Card) // מציג את הכרטיס, אם קיים
+                    .ToListAsync();
+
+                if (!feedbacks.Any())
+                {
+                    return NotFound("No feedbacks found.");
+                }
+
+                return Ok(feedbacks);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error retrieving feedbacks: {ex.Message}");
+            }
+        }
+
+
 
 
     }

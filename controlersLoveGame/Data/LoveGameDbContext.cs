@@ -10,6 +10,7 @@ namespace controlersLoveGame.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Card> Cards { get; set; }
         public DbSet<UserCardStatus> UserCardStatus { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
 
     }
 }

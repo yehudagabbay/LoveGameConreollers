@@ -246,6 +246,27 @@ namespace controlersLoveGame.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        [HttpPost("submit-feedback")]
+        public async Task<IActionResult> SubmitFeedback([FromBody] Feedback feedback)
+        {
+            try
+            {
+                if (feedback == null || feedback.UserID <= 0 || feedback.Rating < 1 || feedback.Rating > 5)
+                {
+                    return BadRequest("Invalid feedback data.");
+                }
+
+                feedback.FeedbackDate = DateTime.UtcNow; // הגדרת תאריך המשוב אוטומטית
+                _context.Feedback.Add(feedback);
+                await _context.SaveChangesAsync();
+
+                return Ok("Feedback submitted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error submitting feedback: {ex.Message}");
+            }
+        }
 
 
     }
