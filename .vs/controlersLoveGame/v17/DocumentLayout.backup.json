@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\prog\\LoveGameConreollers\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5A261994-090C-44C5-BED4-FB7F34CCE890}|controlersLoveGame\\controlersLoveGame.csproj|c:\\prog\\lovegameconreollers\\controlerslovegame\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A261994-090C-44C5-BED4-FB7F34CCE890}|controlersLoveGame\\controlersLoveGame.csproj|solutionrelative:controlerslovegame\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5A261994-090C-44C5-BED4-FB7F34CCE890}|controlersLoveGame\\controlersLoveGame.csproj|c:\\prog\\lovegameconreollers\\controlerslovegame\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A261994-090C-44C5-BED4-FB7F34CCE890}|controlersLoveGame\\controlersLoveGame.csproj|solutionrelative:controlerslovegame\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,19 +35,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "controlersLoveGame\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "controlersLoveGame\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-09T07:29:08.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "controlersLoveGame\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\Controllers\\UsersController.cs*",
-              "RelativeToolTip": "controlersLoveGame\\Controllers\\UsersController.cs*",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAiwI0AAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "controlersLoveGame\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAiwHwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-05T13:01:41.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "WeatherForecast.cs",
               "DocumentMoniker": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\WeatherForecast.cs",
               "RelativeDocumentMoniker": "controlersLoveGame\\WeatherForecast.cs",
@@ -51,12 +68,11 @@
               "RelativeToolTip": "controlersLoveGame\\WeatherForecast.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T13:01:35.377Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T13:01:35.377Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "controlersLoveGame.http",
               "DocumentMoniker": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\controlersLoveGame.http",
               "RelativeDocumentMoniker": "controlersLoveGame\\controlersLoveGame.http",
@@ -64,12 +80,11 @@
               "RelativeToolTip": "controlersLoveGame\\controlersLoveGame.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-02-05T13:01:33.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T13:01:33.335Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\prog\\LoveGameConreollers\\controlersLoveGame\\Program.cs",
               "RelativeDocumentMoniker": "controlersLoveGame\\Program.cs",
@@ -77,8 +92,7 @@
               "RelativeToolTip": "controlersLoveGame\\Program.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T13:01:26.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T13:01:26.691Z"
             }
           ]
         }
